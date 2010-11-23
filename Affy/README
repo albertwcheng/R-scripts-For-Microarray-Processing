@@ -1,3 +1,12 @@
+Remapping libraries installed 
+
+mogene10stv1mmensecdf
+mogene10stv1mmenseprobe
+mogene10stv1mmensgcdf
+mogene10stv1mmensgprobe
+
+
+
 remapping packages for R were downloaded from
 
 http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF
@@ -6,6 +15,7 @@ Go to the U Michigan BrainArray site:
 http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/CDF_download.asp
 
 Choose the newest verison
+
 
 Click on your preferred reference gene set (like Entrez Gene):
 http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/12.1.0/entrezg.asp
