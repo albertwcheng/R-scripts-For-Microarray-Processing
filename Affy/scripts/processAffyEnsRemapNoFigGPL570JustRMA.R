@@ -24,4 +24,4 @@ setwd("processed")
 write.exprs(es2,file="rma.hgu133plus2hsensgcdf.txt")
 print("rma written")
 
-save.image("Rdata")
+save.image("Rdata.hgu133plus2hsensgcdf.justRMA")

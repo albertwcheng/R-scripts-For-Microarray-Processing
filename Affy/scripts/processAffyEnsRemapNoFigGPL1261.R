@@ -37,4 +37,4 @@ es1 = expresso(Data,bg.correct=FALSE, normalize.method="vsn",pmcorrect.method="p
 write.exprs(es1,file="vsn.mouse4302mmensgcdf.txt")
 
 
-save.image("Rdata")
+save.image("Rdata.mouse4302mmensgcdf")

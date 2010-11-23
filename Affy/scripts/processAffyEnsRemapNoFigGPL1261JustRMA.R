@@ -23,4 +23,4 @@ print("rma written")
 
 
 
-save.image("Rdata")
+save.image("Rdata.mouse4302mmensgcdf.justRMA")

@@ -21,4 +21,4 @@ print("rma written")
 
 
 
-save.image("Rdata")
+save.image("Rdata.mogene10stv1mmensgcdf.justRMA")
