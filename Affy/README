@@ -1,11 +1,12 @@
+
+[REMAPPING OF PROBES]
+
 Remapping libraries installed 
 
 mogene10stv1mmensecdf
 mogene10stv1mmenseprobe
 mogene10stv1mmensgcdf
 mogene10stv1mmensgprobe
-
-
 
 remapping packages for R were downloaded from
 
@@ -25,6 +26,18 @@ http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/12.1.0/entrez
 If you want to use GCRMA, you also need the package from the "P" (probe) link.
 
 Install the package(s).
+
+in R: do
+
+install.packages("location of the gz file",repos=NULL,type="source")
+
+May need to install AnnotationDbi as well:
+
+to do so, in R:
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("AnnotationDbi")
+
 
 Use your usual R code but just modify it like this:
 
