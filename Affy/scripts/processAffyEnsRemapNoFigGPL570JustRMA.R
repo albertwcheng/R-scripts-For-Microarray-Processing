@@ -21,7 +21,7 @@ dir.create("processed")
 setwd("processed")
 
 
-write.exprs(es2,file="rma.txt")
+write.exprs(es2,file="rma.hgu133plus2hsensgcdf.txt")
 print("rma written")
 
 save.image("Rdata")
