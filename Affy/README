@@ -1,0 +1,38 @@
+remapping packages for R were downloaded from
+
+http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF
+
+Go to the U Michigan BrainArray site:
+http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/CDF_download.asp
+
+Choose the newest verison
+
+Click on your preferred reference gene set (like Entrez Gene):
+http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/12.1.0/entrezg.asp
+
+Choose your array design (like HGU133Plus2), and choose the "C" link for your platform (like Windows)
+http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/12.1.0/entrezg.download/hgu133plus2hsentrezgcdf_12.1.0.zip
+If you want to use GCRMA, you also need the package from the "P" (probe) link.
+
+Install the package(s).
+
+Use your usual R code but just modify it like this:
+
+# Use this new library
+library(hgu133plus2hsentrezgcdf)
+
+# GCRMA also requires this probe information
+# library(hgu133plus2hsentrezgprobe)
+
+# Go to the CEL file directory and specify the custom CDF with the ReadAffy command
+CELs.entrezgene = ReadAffy(cdfname="hgu133plus2hsentrezgcdf")
+
+# And then process as usual, like
+eset.entrezgene = rma(CELs.entrezgene)
+
+# Otherwise, for RMA, we can use the justRMA commmand, without creating an AffyBatch object
+eset.entrezgene = justRMA(cdfname="hgu133plus2hsentrezgcdf")
+
+Interpretation:
+For custom CDFs keyed to Entrez Gene IDs, a probeset like 10000_at represents Entrez Gene with ID = 10000 (AKT3)
+For other types of transcriptomes, also remove the "_at" to get the gene/transcript ID.
