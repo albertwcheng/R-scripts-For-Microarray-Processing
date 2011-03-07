@@ -3,11 +3,12 @@
 # Albert Cheng
 #
 #
-# Make sure the only ".txt" files in the directory are Agilent data files (or the script will crash)
-#
-# Put this is the same directory as the Agilent data files and run the command
 #
 # R --vanilla < normalize_summarize_Agilent_arrays_OneColor_withTargetFiles.R
+#
+# or in R prompt:
+# 
+# source('normalize_summarize_Agilent_arrays_OneColor_withTargetFiles.R')
 #
 
 origPath=getwd()
@@ -37,14 +38,13 @@ print("done reading")
 print("background correct")
 obj.corrected<-backgroundCorrect(rawObj,method="normexp",offset=1)
 E <- normalizeBetweenArrays(obj.corrected,method="quantile")
-E.beforeBatchEffectRemoval=E
+colnames(E$E)=targets$Cy3
 
 #does it have a batch vector?
 if(length(targets$batch)>0){
-	E<-removeBatchEffect(E.beforeBatchEffectRemoval)
-	E.beforeBatchEffectRemoval.avg <- avereps(E.beforeBatchEffectRemoval,ID=E$genes$ProbeName)
+	E.batchEffectRemoved<-removeBatchEffect(E,targets$batch)
+	
 }
-E.avg <- avereps(E, ID=E$genes$ProbeName)
 
 
 
@@ -62,10 +62,11 @@ setwd(outputPrefix)
 
 #write tables
 if(length(targets$batch)>0){
-	write.table(cbind(E.beforeBatchEffectRemoval$genes, E.beforeBatchEffectRemoval.avg$E), file="exp.noBatchEffectRemoval.txt", sep="\t", quote=FALSE, row.names=F)
+	write.table(cbind(E$genes, E.batchEffectRemoved), file="exp.norm.ber.txt", sep="\t", quote=FALSE, row.names=F)
+	write.table(cbind(GeneName=E$genes$GeneName,E.batchEffectRemoved), file="exp.norm.ber.gn.txt", sep="\t", quote=FALSE, row.names=F)
 }
-write.table(cbind(E.beforeBatchEffectRemoval$genes, E.avg$E), file="exp.norm.txt", sep="\t", quote=FALSE, row.names=F)
-write.table(cbind(GeneName=E.beforeBatchEffectRemoval$genes$GeneName, E.avg$E)), file="exp.norm.gn.txt", sep="\t", quote=FALSE, row.names=F)
+write.table(cbind(E$genes, E$E), file="exp.norm.txt", sep="\t", quote=FALSE, row.names=F)
+write.table(cbind(GeneName=E$genes$GeneName, E$E), file="exp.norm.gn.txt", sep="\t", quote=FALSE, row.names=F)
 
 #go back to wherever we start off.
 setwd(origPath)
