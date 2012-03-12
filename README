@@ -1,3 +1,14 @@
+
+*** This is obsolete! Use the individual git repos ***
+
+AgilentOneColorTemplate = https://github.com/albertwcheng/AgilentOneColorTemplate
+AgilentTwoColorTemplate = https://github.com/albertwcheng/AgilentTwoColorTemplate
+AffyTemplate = https://github.com/albertwcheng/AffyTemplate
+
+****
+
+
+
 Choose the right template and follow README in each template
 
 AgilentOneColorTemplate
